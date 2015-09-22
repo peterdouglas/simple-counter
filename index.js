@@ -11,15 +11,14 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(compression());
 
+app.use(express.static(__dirname + '/dist'));
+
 function sendFile(name) {
   return function(req, res) {
-    res.sendFile(__dirname + "/static/" + name);
+    res.sendFile(__dirname + "/dist/" + name);
   };
 }
 
-app.get("/", sendFile("index.html"));
-app.get("/app.js", sendFile("app.js"));
-app.get("/app.css", sendFile("app.css"));
 
 // [json] GET /api/v1/counters
 // => [
