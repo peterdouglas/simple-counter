@@ -1,9 +1,31 @@
-<div>
-  <h2>Counter App</h2>
-  <p class="lead">
-    <input type="text" ng-model="name" placeholder="Enter name ..."><a class="btn btn-xs btn-success" ng-click="ctrl.addCounter(name)">Add Name!</a>
-  </p>
-
+<div class ="app-window">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h2 class="counter-header">Counter App</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-4">
+    <form class="form-inline">
+    <label class="sr-only" for="newNameField">New Name Field</label></label><input type="text" class="form-control" ng-model="user.name" id="newNameField" placeholder="Enter name ..."><button type="button" class="btn btn-success" ng-click="addCounter(user.name)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="sr-only">Add New User</span></button>
+    </form>
+    </div>
+  </div>
+    <div class="row" ng-repeat="record in records track by record.id">
+      <div class="col-md-1 col-md-offset-2">
+        <button type="button" class="btn btn-danger btn-sm" ng-click="delCounter(record.id)">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"><span class="sr-only">Delete This User</span></span>
+        </button>
+      </div>
+      <div class="col-md-5">
+        <span class="sr-only">User name</span><span class="app-text">{{record.title}}</span>
+      </div>
+      <div><button type="button" class="btn btn-default btn-sm" ng-click="decCounter(record.id)">
+        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"><span class="sr-only">Increase User Count</span></span>
+      </button><span class="app-text"><span class="sr-only">Count</span>{{record.count}}</span><button type="button" class="btn btn-default  btn-sm" ng-click="incCounter(record.id)">
+        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"><span class="sr-only">Decrease User count</span></span>
+      </button></div>
+    </div>
+      <div>Total: {{totalCount}}</div>
 </div>
 
-</div>
