@@ -9,5 +9,7 @@
  */
 angular.module('testApp.services', [])
   .factory('CounterService', function () {
-  return {};
+  return {
+
+  };
   });
