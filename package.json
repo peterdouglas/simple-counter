@@ -1,15 +1,15 @@
 {
-  "name": "sitepoint-test",
+  "name": "simple-counter",
   "version": "1.0.0",
-  "description": "sitepoint front end test",
+  "description": "Simple Counter Test",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "keywords": [
-    "sitepoint"
+    "counter"
   ],
-  "author": "orodio",
+  "author": "Peter Ince",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.10.1",

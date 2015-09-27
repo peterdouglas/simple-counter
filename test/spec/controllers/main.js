@@ -6,14 +6,36 @@ describe('Controller: MainCtrl', function () {
   beforeEach(module('frontendTestApp'));
 
   var MainCtrl,
+    counterServMock,
+    retData,
     scope;
 
-  // Initialize the controller and a mock scope
+  counterServMock = {
+    getAllCounters: function() {},
+    addCounter: function() {},
+    incCounter: function() {},
+    decCounter: function() {},
+    delCounter: function() {}
+  };
+
+  retData = {
+    status: 200,
+    data: []
+  };
+
+    // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
+    spyOn(counterServMock, 'getAllCounters').and.returnValue(retData);
+    spyOn(counterServMock, 'addCounter').and.returnValue(retData);
+    spyOn(counterServMock, 'incCounter').and.returnValue(retData);
+    spyOn(counterServMock, 'decCounter').and.returnValue(retData);
+    spyOn(counterServMock, 'delCounter').and.returnValue(retData);
+
     MainCtrl = $controller('MainCtrl', {
+      CounterService: counterServMock,
       $scope: scope
-      // place here mocked dependencies
+
     });
   }));
 
