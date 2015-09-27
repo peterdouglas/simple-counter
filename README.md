@@ -15,9 +15,9 @@
 NOTE: If you are running this on windows, npm install of Karma can prove problematic - so I have included a test free version
 ```
 $ npm install
-$ npm start
 $ npm run build # Full build that includes testing
 $ npm run build:windows # Full build minus testing - to be run if you are running on windows and don't want to deal with trying to install karma
+$ npm start
 
 ```
 
