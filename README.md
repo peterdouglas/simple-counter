@@ -1,4 +1,4 @@
-# Peter's Solution to the Sitepoint Front-End test
+# Simple Counter
 
 
 ## Technologies used
