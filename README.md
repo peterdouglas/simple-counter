@@ -1,55 +1,38 @@
-# SITEPOINT FRONTEND TEST
+# Simple Counter
 
-You need to create a simple counter application that can do the following:
-* Add a named counter to a list of counters
-* Increment any of the counters
-* Decrement any of the counters
-* Delete a counter
-* Show a sum of all the counter values
-* It must persist data back to the server
 
-We have provided:
-* Compiled Directory: of `/static/`
-* `/static/index.html` that will be served at `localhost:3000` when the server is running
-* `/static/app.js` and `/static/app.css` will be used automatically by `/static/index.html`
+## Technologies used
+- Yeoman generator for the base
+- AngularJS
+- Bootstrap
+- Jasmine
+- Karma
+- bower
+- grunt, livereload and various plugins for development, js and css minification, etc.
 
-> If you need other publicly available files, other than `index.html`, `app.js`, `app.css` you will have to modify the server code in `/index.js`
-
-Some other notes:
-* The design, layout, ux, is all up to you.
-* You can change anything you want (server stuff included) as long as the above list is completed.
-* This isn't a backend test, don't make it require any databases.
-* If you decide to use a precompiler of any kind (js/css/etc..) we need to be able to run it with `npm run build`.
-* We don't want to run any `npm install -g whatever` commands. **NO GLOBAL DEPENDENCIES**
-* Tests are good.
-
-A possible layout could be:
-```
-         Counter App
-+-----------------------------+
-| Input                   [+] |
-+-----------------------------+
-+-----------------------------+
-| [x] Bob           [-] 5 [+] |
-| [x] Steve         [-] 1 [+] |
-| [x] Pat           [-] 4 [+] |
-+-----------------------------+
-+-----------------------------+
-| Total                    10 |
-+-----------------------------+
-```
 
 ## Install and start the server
-
+NOTE: If you are running this on windows, npm install of Karma can prove problematic - so I have included a test free version
 ```
 $ npm install
+$ npm run build # Full build that includes testing
+$ npm run build:windows # Full build minus testing - to be run if you are running on windows and don't want to deal with trying to install karma
 $ npm start
-$ npm run build #[optional] use for any precompilers you choose
+
 ```
+
+
+## Other notes
+- For all glyph icons, I have hidden them from screen readers and added an screen ready only item describing it's function for accessibility
+- These unit tests are only testing the 'happy path' and are not testing for any fails or errors ... this is something that would normally be done,
+  but has been excluded as the Express server only returns successful responses at this point.
+- the view has been optimized for both desktop and mobile.
+
 
 ## API endpoints / examples
 
-> The following endpoints are expecting a `Content-Type: application/json`
+> Endpoints - Note: The delete endpoint has been updated to receive data as a query string as AngularJS
+> does not support sending data in the body as it is not RESTful.
 
 ```
 GET /api/v1/counters
@@ -78,7 +61,7 @@ POST {id: "qwer"} /api/v1/counter/dec
 #   {id: "qwer", title: "steve", count: -1}
 # ]
 
-DELETE {id: "qwer"} /api/v1/counter
+DELETE /api/v1/counter?id={id}
 # [
 #   {id: "asdf", title: "bob", count: 1}
 # ]

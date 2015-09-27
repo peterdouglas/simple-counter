@@ -11,15 +11,23 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(compression());
 
+// This was added to allow CORS requests for testing, and I added the DELETE method as it was being rejected
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
+app.use(express.static(__dirname + '/dist'));
+
 function sendFile(name) {
   return function(req, res) {
-    res.sendFile(__dirname + "/static/" + name);
+    res.sendFile(__dirname + "/dist/" + name);
   };
 }
 
-app.get("/", sendFile("index.html"));
-app.get("/app.js", sendFile("app.js"));
-app.get("/app.css", sendFile("app.css"));
 
 // [json] GET /api/v1/counters
 // => [
@@ -38,15 +46,17 @@ app.get("/api/v1/counters", function(req, res) {
 // => ]
 app.post("/api/v1/counter", function(req, res) {
   res.json(Counters.create(req.body.title));
-})
+});
 
 // [json] DELETE {id: "asdf"} /api/v1/counter
 // => [
 // =>   {id: "zxcv", title: "steve", count: 3},
 // =>   {id: "qwer", title: "bob",   count: 0}
 // => ]
+// **NOTE** - I have refactored this API call to use a query string instead of passing a body object as AngularJS doesn't
+// support passing a body object as it's not RESTful.
 app.delete("/api/v1/counter", function(req, res) {
-  res.json(Counters.delete(req.body.id));
+  res.json(Counters.delete(req.query.id));
 });
 
 // [json] POST {id: "qwer"} /api/v1/counter/inc
