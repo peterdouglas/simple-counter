@@ -16,8 +16,18 @@ NOTE: If you are running this on windows, npm install of Karma can prove problem
 ```
 $ npm install
 $ npm start
-$ npm run build #[optional] use for any precompilers you choose
+$ npm run build # Full build that includes testing
+$ npm run build:windows # Full build minus testing - to be run if you are running on windows and don't want to deal with trying to install karma
+
 ```
+
+
+## Other notes
+- For all glyph icons, I have hidden them from screen readers and added an screen ready only item describing it's function for accessibility
+- These unit tests are only testing the 'happy path' and are not testing for any fails or errors ... this is something that would normally be done,
+  but has been excluded as the Express server only returns successful responses at this point.
+- the view has been optimized for both desktop and mobile.
+
 
 ## API endpoints / examples
 

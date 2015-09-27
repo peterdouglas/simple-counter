@@ -4,7 +4,9 @@
   "description": "Simple Counter Test",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "grunt",
+    "build:windows": "grunt build"
   },
   "keywords": [
     "counter"
@@ -43,7 +45,12 @@
     "jit-grunt": "^0.9.1",
     "jshint-stylish": "^1.0.0",
     "karma": "^0.13.10",
-    "time-grunt": "^1.0.0"
+    "time-grunt": "^1.0.0",
+    "jasmine-core": "^2.3.4",
+    "karma-jasmine": "^0.3.6",
+    "phantomjs": "^1.9.18",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "grunt-karma": "^0.12.1"
   },
   "engines": {
     "node": ">=0.10.0"

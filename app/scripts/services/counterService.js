@@ -24,24 +24,24 @@ angular.module('testApp.services', [])
     return {
 
       addCounter: function(name) {
-        return $http.post('http://localhost:3000/api/v1/counter/', {title:name}).
+        return $http.post('/api/v1/counter/', {title:name}).
           then(successResponse, errorResponse);
       },
       getAllCounters: function() {
-        return $http.get('http://localhost:3000/api/v1/counters/').
+        return $http.get('/api/v1/counters/').
           then(successResponse, errorResponse);
       },
       incCounter: function(userId) {
-        return $http.post('http://localhost:3000/api/v1/counter/inc', {id:userId}).
+        return $http.post('/api/v1/counter/inc', {id:userId}).
           then(successResponse, errorResponse);
       },
       decCounter: function(userId) {
-        return $http.post('http://localhost:3000/api/v1/counter/dec', {id: userId}).
+        return $http.post('/api/v1/counter/dec', {id: userId}).
           then(successResponse, errorResponse);
       },
       delCounter: function(userId) {
         console.log(userId);
-        return $http.delete('http://localhost:3000/api/v1/counter/?id=' + userId).
+        return $http.delete('/api/v1/counter/?id=' + userId).
           then(successResponse, errorResponse);
       }
 
