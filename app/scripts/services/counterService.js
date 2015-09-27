@@ -40,7 +40,6 @@ angular.module('testApp.services', [])
           then(successResponse, errorResponse);
       },
       delCounter: function(userId) {
-        console.log(userId);
         return $http.delete('/api/v1/counter/?id=' + userId).
           then(successResponse, errorResponse);
       }

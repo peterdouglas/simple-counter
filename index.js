@@ -11,15 +11,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(compression());
 
-// This was added to allow CORS requests for testing, and I added the DELETE method as it was being rejected
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
-
 app.use(express.static(__dirname + '/dist'));
 
 function sendFile(name) {
