@@ -8,38 +8,39 @@
  * Controller of the frontendTestApp
  */
 angular.module('testApp.controllers', [])
-  .controller('MainCtrl', ['CounterService', '$scope', function (counterService, $scope) {
-    $scope.records = [];
-    $scope.totalCount = 0;
-    $scope.user = {};
+  .controller('MainCtrl', ['CounterService', function (counterService) {
+    var vm = this;
+
+    vm.records = [];
+    vm.totalCount = 0;
 
     // Create a function to set the records as it is a repetitive process
     function processResponse(response) {
       if(response.status === 200 && response.data) {
         var tempNum = 0;
-        $scope.user = {};
+        vm.user = {};
         response.data.map(function(value) {
           tempNum += parseInt(value.count);
         });
-        $scope.totalCount = tempNum;
-        $scope.records = response.data;
+        vm.totalCount = tempNum;
+        vm.records = response.data;
       }
     }
     counterService.getAllCounters().then(processResponse);
 
-    $scope.addCounter = function(name) {
+    vm.addCounter = function(name) {
       counterService.addCounter(name).then(processResponse);
       };
 
-    $scope.incCounter = function(userId) {
+    vm.incCounter = function(userId) {
       counterService.incCounter(userId).then(processResponse);
     };
 
-    $scope.decCounter = function(userId) {
+    vm.decCounter = function(userId) {
       counterService.decCounter(userId).then(processResponse);
     };
 
-    $scope.delCounter = function(userId) {
+    vm.delCounter = function(userId) {
       counterService.delCounter(userId).then(processResponse);
     };
 

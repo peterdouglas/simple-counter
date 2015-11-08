@@ -2,28 +2,28 @@
   <div class="row">
     <div class="col-md-12 text-center col-xs-12">
     <form class="form-inline">
-    <label class="sr-only" for="newNameField">New Name Field</label></label><input type="text" class="form-control" ng-model="user.name" id="newNameField" placeholder="Enter name ..."><button type="submit" class="btn btn-success" ng-click="addCounter(user.name)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="sr-only">Add New User</span></button>
+    <label class="sr-only" for="newNameField">New Name Field</label></label><input type="text" class="form-control" ng-model="ctrl.user.name" id="newNameField" placeholder="Enter name ..."><button type="submit" class="btn btn-success" ng-click="ctrl.addCounter(ctrl.user.name)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="sr-only">Add New User</span></button>
     </form>
     </div>
   </div>
-    <div class="row"  ng-repeat="record in records track by record.id">
+    <div class="row"  ng-repeat="record in ctrl.records track by record.id">
       <div class="col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-1 col-xs-1 col-xs-offset-0">
-        <button type="button" class="btn btn-danger btn-sm" ng-click="delCounter(record.id)">
+        <button type="button" class="btn btn-danger btn-sm" ng-click="ctrl.delCounter(record.id)">
           <span class="glyphicon glyphicon-remove" aria-hidden="true"><span class="sr-only">Delete This User</span></span>
         </button>
       </div>
       <div class="col-md-7 col-sm-7 col-xs-7">
         <span class="sr-only">User name</span><div class="app-text">{{record.title}}</div>
       </div>
-      <div><button type="button" class="btn btn-default btn-sm" ng-click="decCounter(record.id)">
+      <div><button type="button" class="btn btn-default btn-sm" ng-click="ctrl.decCounter(record.id)">
         <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"><span class="sr-only">Increase User Count</span></span>
-      </button><span class="sr-only">Count</span><div class="app-text">{{record.count}}</div><button type="button" class="btn btn-default  btn-sm" ng-click="incCounter(record.id)">
+      </button><span class="sr-only">Count</span><div class="app-text">{{record.count}}</div><button type="button" class="btn btn-default  btn-sm" ng-click="ctrl.incCounter(record.id)">
         <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"><span class="sr-only">Decrease User count</span></span>
       </button></div>
     </div>
     <div class="row text-center">
       <div class="col-md-3 col-md-offset-8 col-sm-3 col-sm-offset-8  col-xs-4 col-xs-offset-7">
-      <div><h4>Total: {{totalCount}}</h4></div>
+      <div><h4>Total: {{ctrl.totalCount}}</h4></div>
       </div>
     </div>
 </div>

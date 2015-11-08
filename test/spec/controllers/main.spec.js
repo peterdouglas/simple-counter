@@ -38,8 +38,7 @@ describe('Controller: MainCtrl', function () {
     spyOn(counterServMock, 'delCounter').and.returnValue(def.promise);
 
     MainCtrl = $controller('MainCtrl', {
-      CounterService: counterServMock,
-      $scope: scope
+      CounterService: counterServMock
 
     });
     scope.$digest();
@@ -48,7 +47,7 @@ describe('Controller: MainCtrl', function () {
   it('should call getAllCounters on load and populate array', function () {
     // ensure that the page load has trigger the first db call and populated the data
     expect(counterServMock.getAllCounters).toHaveBeenCalled();
-    expect(scope.records).toEqual([{id: 1, title: "Peter", count: 0}]);
+    expect(MainCtrl.records).toEqual([{id: 1, title: "Peter", count: 0}]);
 
     // ensure that none of the other services have been called
     expect(counterServMock.addCounter).not.toHaveBeenCalled();
@@ -59,13 +58,13 @@ describe('Controller: MainCtrl', function () {
 
   it('should call addCounter service and populate array with returned data when correct details are passed through', function () {
     // Call the addCounter service with a new name
-    scope.addCounter("Peter");
+    MainCtrl.addCounter("Peter");
     scope.$digest();
 
     // page load should still have called the initial data
     expect(counterServMock.getAllCounters).toHaveBeenCalled();
     expect(counterServMock.addCounter).toHaveBeenCalledWith("Peter");
-    expect(scope.records).toEqual([{id: 1, title: "Peter", count: 0}]);
+    expect(MainCtrl.records).toEqual([{id: 1, title: "Peter", count: 0}]);
 
 
     expect(counterServMock.incCounter).not.toHaveBeenCalled();
@@ -75,13 +74,13 @@ describe('Controller: MainCtrl', function () {
 
   it('should call incCounter service and populate array with returned data when correct details are passed through', function () {
     // Call the incCounter service with the id
-    scope.incCounter("asdw");
+    MainCtrl.incCounter("asdw");
     scope.$digest();
 
     // page load should still have called the initial data
     expect(counterServMock.getAllCounters).toHaveBeenCalled();
     expect(counterServMock.incCounter).toHaveBeenCalledWith("asdw");
-    expect(scope.records).toEqual([{id: 1, title: "Peter", count: 0}]);
+    expect(MainCtrl.records).toEqual([{id: 1, title: "Peter", count: 0}]);
 
 
     expect(counterServMock.addCounter).not.toHaveBeenCalled();
@@ -91,13 +90,13 @@ describe('Controller: MainCtrl', function () {
 
   it('should call decCounter service and populate array with returned data when correct details are passed through', function () {
     // Call the decCounter service with the id
-    scope.decCounter("asdw");
+    MainCtrl.decCounter("asdw");
     scope.$digest();
 
     // page load should still have called the initial data
     expect(counterServMock.getAllCounters).toHaveBeenCalled();
     expect(counterServMock.decCounter).toHaveBeenCalledWith("asdw");
-    expect(scope.records).toEqual([{id: 1, title: "Peter", count: 0}]);
+    expect(MainCtrl.records).toEqual([{id: 1, title: "Peter", count: 0}]);
 
 
     expect(counterServMock.addCounter).not.toHaveBeenCalled();
@@ -107,13 +106,13 @@ describe('Controller: MainCtrl', function () {
 
   it('should call delCounter service and populate array with returned data when correct details are passed through', function () {
     // Call the incCounter service with the id
-    scope.delCounter("asdw");
+    MainCtrl.delCounter("asdw");
     scope.$digest();
 
     // page load should still have called the initial data
     expect(counterServMock.getAllCounters).toHaveBeenCalled();
     expect(counterServMock.delCounter).toHaveBeenCalledWith("asdw");
-    expect(scope.records).toEqual([{id: 1, title: "Peter", count: 0}]);
+    expect(MainCtrl.records).toEqual([{id: 1, title: "Peter", count: 0}]);
 
 
     expect(counterServMock.addCounter).not.toHaveBeenCalled();

@@ -6,7 +6,7 @@
  * @description
  * # frontendTestApp
  *
- * Main module of the Test for Flippa - Hi James. :)
+ * Main module of Simple-Counter
  */
 angular
   .module('frontendTestApp', ['testApp.controllers', 'testApp.services']);
